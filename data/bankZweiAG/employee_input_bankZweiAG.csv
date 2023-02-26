@@ -1,0 +1,12 @@
+Personalnummer,Arbeitnehmer,ho_wunsch,wunsch_tage,Fürsorgeverantwortung,Pendelzeit
+2000,AB,True,1,False,10
+2001,BC,True,5,True,45
+2002,CD,True,4,True,40
+2003,DE,False,0,False,60
+2004,EF,False,0,False,50
+2005,FG,True,2,False,20
+2006,GH,False,0,True,60
+2007,HI,True,1,False,35
+2008,IJ,True,2,True,30
+2009,JK,True,5,True,40
+2010,KL,False,0,True,90
