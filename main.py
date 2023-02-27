@@ -33,7 +33,7 @@ def ho_prob(days):
     return home_office_prob
 
 
-# calculate the home office amount based on the age (gen-preference)
+# calculate the home office level based on the age (gen-preference)
 def ho_generation(year):
     if 1946 <= year <= 1964:
         return 48
@@ -45,7 +45,7 @@ def ho_generation(year):
         return 28
 
 
-# calculate the home office amount based on the education
+# calculate the home office level based on the education
 def ho_degree(abschluss):
     if abschluss == 'Hochschule':
         return 48
@@ -55,7 +55,7 @@ def ho_degree(abschluss):
         return 8
 
 
-# calculate the home office amount based on the commute time
+# calculate the home office level based on the commute time
 def ho_commute(time):
     if time > 40:
         return 46
@@ -63,7 +63,7 @@ def ho_commute(time):
         return 0
 
 
-# calculate the home office amount based on caring responsibility
+# calculate the home office level based on caring responsibility
 def ho_gender_resp(employees):
     if employees['Fürsorgeverantwortung'] and employees['Geschlecht'] == 'weiblich':
         return 50
@@ -73,7 +73,7 @@ def ho_gender_resp(employees):
         return 46
 
 
-# calculate the preferred amount of home office amount
+# calculate the preferred level of home office level
 def ho_prefer(employee_input):
     if employee_input['ho_wunsch'] == True:
         return (employee_input['wunsch_tage'] / 5) * 100
@@ -91,6 +91,11 @@ def deviation(ho_shares):
 
 employees, tasks, employee_input = load_data(company)
 
+# make sure everything is numeric
+tasks.loc[:, "T01":"Q42"] = tasks.loc[:, "T01":"Q42"].apply(pd.to_numeric)
+employee_input[["wunsch_tage", "Pendelzeit"]] = employee_input[["wunsch_tage", "Pendelzeit"]].apply(pd.to_numeric)
+
+
 # %%
 
 # -------------------------
@@ -99,8 +104,7 @@ employees, tasks, employee_input = load_data(company)
 
 # take sum of tasks
 # 3.2.1 The Teleworkability-Index
-ho_tasks = tasks['T09'] + tasks['T10'] + tasks['T11'] + tasks['T12'] + tasks['T13'] + tasks['T14'] + tasks['T15'] + \
-           tasks['T16']
+ho_tasks = tasks['T09'] + tasks['T10'] + tasks['T11'] + tasks['T12'] + tasks['T13'] + tasks['T14'] + tasks['T15'] + tasks['T16']
 
 # add new column to df
 tasks['ho_max'] = ho_tasks
@@ -119,7 +123,7 @@ tasks.loc[tasks.ho_prob == 0, ['ho_max']] = 0
 ho_max_total = int((int(tasks['ho_max'].sum())) / len(tasks.index))
 
 # results after first 3 steps (mean)
-print('Der maximum amount of home office at the company after the first three points is: ' + str(ho_max_total) + '%.')
+print('The maximum level of home office at the company after the first three points is: ' + str(ho_max_total) + '%.')
 
 # 3.2.4 Task-Media-Fit Model
 grouptasks_ho = tasks['Q01'] + tasks['Q02'] + tasks['Q42']
@@ -132,12 +136,12 @@ tasks[['Tätigkeit','grouptasks_ho', 'grouptasks_office']]
 opt_tasks = tasks['ho_max'] - tasks['grouptasks_office']
 tasks['ho_opt'] = opt_tasks
 
-# correct if mox amount of home office was already zero:
+# correct if mox level of home office was already zero:
 tasks.loc[tasks.ho_opt <= 0, ['ho_opt']] = 0
 
 # calculate the mean
 ho_opt_total = int((int(tasks['ho_opt'].sum())) / len(tasks.index))
-print('The optimal amount of home office based on the media fit model is: ' + str(ho_opt_total) + '%.')
+print('The optimal level of home office based on the media fit model is: ' + str(ho_opt_total) + '%.')
 
 # %%
 
@@ -167,7 +171,7 @@ employees_subset = employees[['ho_generation', 'ho_degree', 'ho_commute', 'ho_re
 average_value_ho = np.average(employees_subset, axis=1)
 employees_subset['ho_social'] = average_value_ho
 ho_social_total = round((int(employees_subset['ho_social'].sum()) / len(employees.index)), 2)
-print('The optimal amount of home office based on the social factors is: ' + str(ho_social_total) + '%.')
+print('The optimal level of home office based on the social factors is: ' + str(ho_social_total) + '%.')
 
 # %%
 # -------------------------
