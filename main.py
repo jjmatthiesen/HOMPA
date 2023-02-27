@@ -59,6 +59,8 @@ def ho_degree(abschluss):
 def ho_commute(time):
     if time > 40:
         return 46
+    elif 20 <= time <= 40:
+        return 2.3 * time -46 # linear decline
     else:
         return 0
 
