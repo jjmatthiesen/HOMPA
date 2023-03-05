@@ -87,7 +87,7 @@ $$        H_{\text{PP}}(e_j) =
         \end{cases}$$
 
 
-Combined: $$ H_{ \text{personality}}(e_j) = \frac{H_{\text{OPN}}(e_j) + H_{\text{NCM}}(e_j) + H_{\text{PP}}(e_j)}{{6.1+6.3+6.5}} * 100$$
+Combined: $$H_{ \text{personality}}(e_j) = \frac{H_{\text{OPN}}(e_j) + H_{\text{NCM}}(e_j) + H_{\text{PP}}(e_j)}{{6.1+6.3+6.5}} * 100$$
 
 
 ## Employee Requests
