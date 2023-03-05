@@ -61,7 +61,6 @@ $$        H_{caring}(e_j) =
             50 ,& \text{if } C \text{ and } G = \text{f} \\
             48 ,& \text{if }  C \text{ and } G = \text{m} \\
             46,              & \text{otherwise} 
-        
         \end{cases}$$
 
 ### Personality Factors
