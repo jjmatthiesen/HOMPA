@@ -32,12 +32,21 @@ $$H_{\text{opt}}(e_j) = H_{\text{max}}(e_j) - \sum^{41}_{x = 3} Q_x$$
 ### Different Generations
 
 $$H_{\text{gen}}(e_j) =
-        \begin{cases}
-            48 ,& \text{if } Y_{\text{birth}} \in \{1946,1964\} \\
-            50 ,& \text{if }  Y_{\text{birth}} \in \{1965,1980\} \\
-            44 ,& \text{if }  Y_{\text{birth}} \in \{1981,1994\} \\
-            28,              & \text{otherwise, see Gen Z
+\begin{cases}
+48 ,& \text{if } Y_{\text{birth}} \in \{1946,1964\} \\
+50 ,& \text{if }  Y_{\text{birth}} \in \{1965,1980\} \\
+44 ,& \text{if }  Y_{\text{birth}} \in \{1981,1994\} \\
+28,              & \text{otherwise, see Gen Z}
 \end{cases}$$
+
+### Education 
+$$        H_{\text{degree}}(e_j) =
+        \begin{cases}
+            48 ,& \text{if } L_{edu} =  \text{"high school"}\\
+            17 ,& \text{if } L_{edu}  =\text{"middle school"} \\
+            8,              & \text{otherwise} 
+        \end{cases}$$
+
 ##
 
 
