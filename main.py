@@ -4,6 +4,18 @@ import numpy as np
 import datetime
 import warnings
 import pathlib
+import pygwalker as pyg
+
+import dtale
+import dtale.app as dtale_app
+
+from IPython.display import Image
+import datetime
+import warnings
+import pathlib
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -65,20 +77,20 @@ def ho_commute(time):
         return 0
 
 
-# calculate the home office level based on caring responsibility
+# calculate the home office proportion based on caring responsibility
 def ho_gender_resp(employees):
-    if employees['Fürsorgeverantwortung'] and employees['Geschlecht'] == 'weiblich':
+    if employees['Caring Responsibility'] and employees['Gender'] == 'female':
         return 50
-    elif employees['Fürsorgeverantwortung'] and employees['Geschlecht'] == 'männlich':
+    elif employees['Caring Responsibility'] and employees['Gender'] == 'male':
         return 48
     else:
         return 46
 
 
-# calculate the preferred level of home office level
+# calculate the preferred proportion of home office
 def ho_prefer(employee_input):
-    if employee_input['ho_wunsch'] == True:
-        return (employee_input['wunsch_tage'] / 5) * 100
+    if employee_input['ho_wish'] == True:
+        return (employee_input['desired_days'] / 5) * 100
     else:
         return 0
 
@@ -91,12 +103,48 @@ def deviation(ho_shares):
     return ho_shares
 
 
+# calculate the preferred proportion of home office based on personality traits
+# see Kawakubo, S., & Arata, S. (2022). Study on residential environment and workers’ personality traits on productivity while working from home. Building and Environment, 212, 108787.
+def ho_personality_openness(employee_input):
+    if 2 <= employee_input['openness'] <= 8:
+        return 1.2
+    else:
+        return 6.1
+
+
+def ho_personality_neuroticism(employee_input):
+    if 2 <= employee_input['neuroticism'] <= 7:
+        return 6.3
+    else:
+        return 2.2
+
+
+def ho_personality_perseverance_and_passion(employee_input):
+    if 1 <= employee_input['perseverance_and_grit'] <= 3:
+        return 1.7
+    else:
+        return 6.5
+
+# the other three factors are not significant, therefore, we currently avoid these
+# Conscientiousness
+# Extraversion
+# Agreeableness
+
+
+# we calculate the percentage based on the single value
+def ho_personality__complete(employee_input):
+  return ((ho_personality_openness(employee_input) + ho_personality_neuroticism(employee_input) + ho_personality_perseverance_and_passion(employee_input))/(6.1+6.3+6.5)) * 100
+
+
 employees, tasks, employee_input = load_data(company)
 
 # make sure everything is numeric
 tasks.loc[:, "T01":"Q42"] = tasks.loc[:, "T01":"Q42"].apply(pd.to_numeric)
-employee_input[["wunsch_tage", "Pendelzeit"]] = employee_input[["wunsch_tage", "Pendelzeit"]].apply(pd.to_numeric)
+employee_input[["desired_days", "Commute", "openness", "neuroticism", "perseverance_and_grit"]] = employee_input[["desired_days", "Commute", "openness", "neuroticism", "perseverance_and_grit"]].apply(pd.to_numeric)
 
+# make everything in these two columns to a boolean value
+employee_input[["ho_wish", "Caring Responsibility"]] = employee_input[["ho_wish", "Caring Responsibility"]].replace({'True':True,'False':False})
+employee_input[["ho_wish", "Caring Responsibility"]] = employee_input[["ho_wish", "Caring Responsibility"]].where(employee_input[["ho_wish", "Caring Responsibility"]].applymap(type) == bool)
 
 # %%
 
@@ -115,17 +163,17 @@ tasks['ho_max'] = ho_tasks
 tasks.loc[tasks.it == False, ['ho_max']] = 0
 
 # 3.2.3 Sense of Belonging to Company.
-employees['Eintrittsdatum'] = pd.to_datetime(employees['Eintrittsdatum'])
-employees['Unternehmenszugehörigkeit'] = employees['Eintrittsdatum'].apply(tenure)
-employees['ho_prob'] = employees['Unternehmenszugehörigkeit'].apply(ho_prob)
+employees['Entry date'] = pd.to_datetime(employees['Entry date'])
+employees['Company affiliation duration'] = employees['Entry date'].apply(tenure)
+employees['ho_prob'] = employees['Company affiliation duration'].apply(ho_prob)
 
-tasks = pd.merge(tasks, employees[['Tätigkeit', 'ho_prob']], on='Tätigkeit', how='left')
+tasks = pd.merge(tasks, employees[['Activity', 'ho_prob']], on='Activity', how='left')
 tasks.loc[tasks.ho_prob == 0, ['ho_max']] = 0
 # calculate the mean
 ho_max_total = int((int(tasks['ho_max'].sum())) / len(tasks.index))
 
 # results after first 3 steps (mean)
-print('The maximum level of home office at the company after the first three points is: ' + str(ho_max_total) + '%.')
+print('The maximum proportion of home office at the company after the first three points is: ' + str(ho_max_total) + '%.')
 
 # 3.2.4 Task-Media-Fit Model
 grouptasks_ho = tasks['Q01'] + tasks['Q02'] + tasks['Q42']
@@ -133,18 +181,17 @@ grouptasks_office = tasks['Q03'] + tasks['Q41']
 
 tasks['grouptasks_ho'] = grouptasks_ho
 tasks['grouptasks_office'] = grouptasks_office
-tasks[['Tätigkeit','grouptasks_ho', 'grouptasks_office']]
+tasks[['Activity','grouptasks_ho', 'grouptasks_office']]
 
 opt_tasks = tasks['ho_max'] - tasks['grouptasks_office']
 tasks['ho_opt'] = opt_tasks
 
-# correct if mox level of home office was already zero:
+# correct if mox amount of home office was already zero:
 tasks.loc[tasks.ho_opt <= 0, ['ho_opt']] = 0
 
 # calculate the mean
 ho_opt_total = int((int(tasks['ho_opt'].sum())) / len(tasks.index))
-print('The optimal level of home office based on the media fit model is: ' + str(ho_opt_total) + '%.')
-
+print('The optimal amount of home office based on the media fit model is: ' + str(ho_opt_total) + '%.')
 # %%
 
 # -------------------------
@@ -152,28 +199,35 @@ print('The optimal level of home office based on the media fit model is: ' + str
 # -------------------------
 
 # 3.3.1 Different generations
-employees['Geburtsdatum'] = pd.to_datetime(employees['Geburtsdatum'])
-employees['birth_year'] = employees['Geburtsdatum'].dt.year
+employees['Birth date'] = pd.to_datetime(employees['Birth date'])
+employees['birth_year'] = employees['Birth date'].dt.year
 employees['ho_generation'] = employees['birth_year'].apply(ho_generation)
 
 # 3.3.2 Education.
-employees['ho_degree'] = employees['Bildungsabschluss'].apply(ho_degree)
+employees['ho_degree'] = employees['Degree'].apply(ho_degree)
 
 # 3.3.3 Commute time
-employees['ho_commute'] = employee_input['Pendelzeit'].apply(ho_commute)
+employees['ho_commute'] = employee_input['Commute'].apply(ho_commute)
 
 # 3.3.4 Caring Responsibility
-employees = employees.join(employee_input['Fürsorgeverantwortung'])
+employees = employees.join(employee_input['Caring Responsibility'])
 employees['ho_responsibility'] = employees.apply(ho_gender_resp, axis=1)
 
+# 3.3.5 Personality factors
+employees = employees.join(employee_input['openness'])
+employees = employees.join(employee_input['neuroticism'])
+employees = employees.join(employee_input['perseverance_and_grit'])
+
+employees['personality_factor'] = employees.apply(ho_personality__complete, axis=1)
+
 # Social factors subset
-employees_subset = employees[['ho_generation', 'ho_degree', 'ho_commute', 'ho_responsibility']]
+employees_subset = employees[['ho_generation', 'ho_degree', 'ho_commute', 'ho_responsibility', 'personality_factor']]
 
 # calculate the mean
 average_value_ho = np.average(employees_subset, axis=1)
 employees_subset['ho_social'] = average_value_ho
 ho_social_total = round((int(employees_subset['ho_social'].sum()) / len(employees.index)), 2)
-print('The optimal level of home office based on the social factors is: ' + str(ho_social_total) + '%.')
+print('The optimal proportion of home office based on the social factors is: ' + str(ho_social_total) + '%.')
 
 # %%
 # -------------------------
@@ -189,15 +243,15 @@ print('The mean of the employees wishes for home office is: ' + str(ho_prefer_to
 
 # %%
 # -------------------------
-# Difference Between the Calculated level of Home Office and Preference
+# Difference Between the Calculated proportion of Home Office and Preference
 # -------------------------
 
 employees = employees.join(employee_input['ho_prefer'])
 employees = employees.join(employees_subset['ho_social'])
-employees = pd.merge(employees, tasks[['Tätigkeit', 'ho_max']], on='Tätigkeit', how='left')
-employees = pd.merge(employees, tasks[['Tätigkeit', 'ho_opt']], on='Tätigkeit', how='left')
+employees = pd.merge(employees, tasks[['Activity', 'ho_max']], on='Activity', how='left')
+employees = pd.merge(employees, tasks[['Activity', 'ho_opt']], on='Activity', how='left')
 
-ho_shares = employees[['Personalnummer', 'Tätigkeit', 'Arbeitnehmer', 'ho_social', 'ho_opt', 'ho_max', 'ho_prefer']]
+ho_shares = employees[['Personal number', 'Activity', 'Employee', 'ho_social', 'ho_opt', 'ho_max', 'ho_prefer']]
 ho_shares = ho_shares.drop_duplicates()
 employees = employees.drop_duplicates()
 
