@@ -16,12 +16,30 @@ H_{\max}(e_j), & \text{otherwise}
 \end{cases}$$
 $$
 
-##
+## Sense of Belonging to Company 
+$$
+H_{\text{max}_{\text{aff}}}(e_j) = 
+\begin{cases}
+\text{false } ,& \text{if } D_{\text{now}} - D_{\text{start}} \leq 180 \\
+H_{\text{max}}(e_j),              & \text{otherwise}
+\end{cases}$$
 
-##
+## Task-Media-Fit Model
+$$H_{\text{opt}}(e_j) = H_{\text{max}}(e_j) - \sum^{41}_{x = 3} Q_x$$
 
-##
+## Social Factors
 
+### Different Generations
+
+$$
+        H_{\text{gen}}(e_j) =
+        \begin{cases}
+            48 ,& \text{if } Y_{\text{birth}} \in \{1946,1964\} \\
+            50 ,& \text{if }  Y_{\text{birth}} \in \{1965,1980\} \\
+            44 ,& \text{if }  Y_{\text{birth}} \in \{1981,1994\} \\
+            28,              & \text{otherwise, see Gen Z~\cite{kamouri2020}} %28% der Woche (1,4 Tage) für genZ
+        
+        \end{cases}$$
 ##
 
 
