@@ -19,8 +19,8 @@ import matplotlib.pyplot as plt
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-company = "sportGmbH"
-# company = "bankZweiAG"
+# company = "sportGmbH"
+company = "bankZweiAG"
 
 
 def load_data(comp):
@@ -72,7 +72,7 @@ def ho_commute(time):
     if time > 40:
         return 46
     elif 20 <= time <= 40:
-        return 2.3 * time -46 # linear decline
+        return 2.3 * time - 46  # linear decline
     else:
         return 0
 
@@ -89,7 +89,7 @@ def ho_gender_resp(employees):
 
 # calculate the preferred proportion of home office
 def ho_prefer(employee_input):
-    if employee_input['ho_wish'] == True:
+    if employee_input['ho_wish']:
         return (employee_input['desired_days'] / 5) * 100
     else:
         return 0
@@ -125,6 +125,7 @@ def ho_personality_perseverance_and_passion(employee_input):
     else:
         return 6.5
 
+
 # the other three factors are not significant, therefore, we currently avoid these
 # Conscientiousness
 # Extraversion
@@ -133,18 +134,22 @@ def ho_personality_perseverance_and_passion(employee_input):
 
 # we calculate the percentage based on the single value
 def ho_personality__complete(employee_input):
-  return ((ho_personality_openness(employee_input) + ho_personality_neuroticism(employee_input) + ho_personality_perseverance_and_passion(employee_input))/(6.1+6.3+6.5)) * 100
+    return ((ho_personality_openness(employee_input) + ho_personality_neuroticism(
+        employee_input) + ho_personality_perseverance_and_passion(employee_input)) / (6.1 + 6.3 + 6.5)) * 100
 
 
 employees, tasks, employee_input = load_data(company)
 
 # make sure everything is numeric
 tasks.loc[:, "T01":"Q42"] = tasks.loc[:, "T01":"Q42"].apply(pd.to_numeric)
-employee_input[["desired_days", "Commute", "openness", "neuroticism", "perseverance_and_grit"]] = employee_input[["desired_days", "Commute", "openness", "neuroticism", "perseverance_and_grit"]].apply(pd.to_numeric)
+employee_input[["desired_days", "Commute", "openness", "neuroticism", "perseverance_and_grit"]] = employee_input[
+    ["desired_days", "Commute", "openness", "neuroticism", "perseverance_and_grit"]].apply(pd.to_numeric)
 
 # make everything in these two columns to a boolean value
-employee_input[["ho_wish", "Caring Responsibility"]] = employee_input[["ho_wish", "Caring Responsibility"]].replace({'True':True,'False':False})
-employee_input[["ho_wish", "Caring Responsibility"]] = employee_input[["ho_wish", "Caring Responsibility"]].where(employee_input[["ho_wish", "Caring Responsibility"]].applymap(type) == bool)
+employee_input[["ho_wish", "Caring Responsibility"]] = employee_input[["ho_wish", "Caring Responsibility"]].replace(
+    {'True': True, 'False': False})
+employee_input[["ho_wish", "Caring Responsibility"]] = employee_input[["ho_wish", "Caring Responsibility"]].where(
+    employee_input[["ho_wish", "Caring Responsibility"]].applymap(type) == bool)
 
 # %%
 
@@ -154,7 +159,8 @@ employee_input[["ho_wish", "Caring Responsibility"]] = employee_input[["ho_wish"
 
 # take sum of tasks
 # 3.2.1 The Teleworkability-Index
-ho_tasks = tasks['T09'] + tasks['T10'] + tasks['T11'] + tasks['T12'] + tasks['T13'] + tasks['T14'] + tasks['T15'] + tasks['T16']
+ho_tasks = tasks['T09'] + tasks['T10'] + tasks['T11'] + tasks['T12'] + tasks['T13'] + tasks['T14'] + tasks['T15'] + \
+           tasks['T16']
 
 # add new column to df
 tasks['ho_max'] = ho_tasks
@@ -173,7 +179,8 @@ tasks.loc[tasks.ho_prob == 0, ['ho_max']] = 0
 ho_max_total = int((int(tasks['ho_max'].sum())) / len(tasks.index))
 
 # results after first 3 steps (mean)
-print('The maximum proportion of home office at the company after the first three points is: ' + str(ho_max_total) + '%.')
+print(
+    'The maximum proportion of home office at the company after the first three points is: ' + str(ho_max_total) + '%.')
 
 # 3.2.4 Task-Media-Fit Model
 grouptasks_ho = tasks['Q01'] + tasks['Q02'] + tasks['Q42']
@@ -181,7 +188,7 @@ grouptasks_office = tasks['Q03'] + tasks['Q41']
 
 tasks['grouptasks_ho'] = grouptasks_ho
 tasks['grouptasks_office'] = grouptasks_office
-tasks[['Activity','grouptasks_ho', 'grouptasks_office']]
+tasks[['Activity', 'grouptasks_ho', 'grouptasks_office']]
 
 opt_tasks = tasks['ho_max'] - tasks['grouptasks_office']
 tasks['ho_opt'] = opt_tasks
@@ -259,5 +266,3 @@ ho_shares = ho_shares.apply(deviation, axis=1)
 
 pathlib.Path('results/').mkdir(parents=True, exist_ok=True)
 ho_shares.to_csv('results/results_' + company + '.csv', index=False)
-
-

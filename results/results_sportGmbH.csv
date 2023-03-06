@@ -1,18 +1,18 @@
-Personalnummer,Tätigkeit,Arbeitnehmer,ho_social,ho_opt,ho_max,ho_prefer,difference_to_max,difference_to_opt,difference_to_social
-111111,Personalleiter,AA,36.0,60,100,40.0,60,20,-4
-111112,Einkaufsleiter,BB,35.25,70,100,0.0,100,70,35
-111113,Sekretär,CC,35.5,100,100,60.0,40,40,-24
-111114,Hausmeister,DD,26.0,0,0,0.0,0,0,26
-111115,Reinigungskraft,EE,36.0,0,0,0.0,0,0,36
-111116,IT Fachkraft 1,FF,36.5,100,100,80.0,20,20,-43
-111117,Controller,GG,36.5,0,0,40.0,-40,-40,-3
-111118,IT Fachkraft 2,HH,47.5,100,100,100.0,0,0,-52
-111119,Marketing Manager,II,47.0,100,100,40.0,60,60,7
-111120,Teamleiter - Finanzen,JJ,47.0,70,100,0.0,100,70,47
-111121,Vertriebsmitarbeiter,KK,27.25,45,100,0.0,100,45,27
-111122,Filialleiter,LL,29.25,20,80,20.0,60,0,9
-111123,Filialleiter,MM,24.5,20,80,40.0,40,-20,-15
-111124,Verkäufer,NN,34.5,0,0,0.0,0,0,34
-111125,Verkäufer,OO,47.0,0,0,0.0,0,0,47
-111126,Verkäufer,PP,27.25,0,0,0.0,0,0,27
-111127,Verkäufer,QQ,37.0,0,0,0.0,0,0,37
+Personal number,Activity,Employee,ho_social,ho_opt,ho_max,ho_prefer,difference_to_max,difference_to_opt,difference_to_social
+111111,HR Manager,AA,43.3968253968254,60,100,40.0,60,20,3
+111112,Purchasing Manager,BB,33.596825396825395,70,100,0.0,100,70,33
+111113,Secretary,CC,38.98201058201058,100,100,60.0,40,40,-21
+111114,Janitor,DD,26.196825396825396,0,0,0.0,0,0,26
+111115,Cleaning staff,EE,38.53544973544974,0,0,0.0,0,0,38
+111116,IT specialist 1,FF,43.53544973544974,100,100,80.0,20,20,-36
+111117,Controller,GG,36.8968253968254,0,0,40.0,-40,-40,-3
+111118,IT specialist 2,HH,43.3968253968254,100,100,100.0,0,0,-56
+111119,Marketing Manager,II,42.9968253968254,100,100,40.0,60,60,2
+111120,Team Leader - Finance,JJ,42.9968253968254,70,100,0.0,100,70,42
+111121,Sales representative,KK,31.796825396825398,45,100,0.0,100,45,31
+111122,Store manager,LL,28.796825396825398,20,80,20.0,60,0,8
+111123,Store manager,MM,34.196825396825396,20,80,40.0,40,-20,-5
+111124,Seller,NN,32.9968253968254,0,0,0.0,0,0,32
+111125,Seller,OO,42.9968253968254,0,0,0.0,0,0,42
+111126,Seller,PP,43.51481481481481,0,0,0.0,0,0,43
+111127,Seller,QQ,34.9968253968254,0,0,0.0,0,0,34

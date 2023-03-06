@@ -1,18 +1,18 @@
 Personal number,Employee,Birth date,Entry date,Gender,Degree,Activity
-111111,AA,1962-02-23,2000-07-01,männlich,Hochschule,HR Manager
-111112,BB,1996-09-16,2021-02-01,weiblich,mittlere Reife,Purchasing Manager
-111113,CC,1988-04-12,2018-10-01,weiblich,Hochschule,Secretary
-111114,DD,1973-12-31,1995-01-01,weiblich,Hauptschulabschluß,Janitor
-111115,EE,1986-07-03,2010-12-01,männlich,Hauptschulabschluß,Cleaning staff
-111116,FF,1965-04-19,2003-04-01,männlich,Hochschule,IT specialist 1
-111117,GG,1977-09-23,2008-05-01,männlich,Hochschule,Controller
-111118,HH,1971-10-26,2014-06-01,weiblich,Hochschule,IT specialist 2
-111119,II,1994-11-02,2020-08-01,weiblich,Hochschule,Marketing Manager
-111120,JJ,1958-05-16,1996-11-01,weiblich,Hochschule,Team Leader - Finance
-111121,KK,1981-04-23,2021-06-01,männlich,mittlere Reife,Sales representative
-111122,LL,1970-09-21,2010-06-01,weiblich,mittlere Reife,Store manager
-111123,MM,1988-12-22,2020-03-01,männlich,Hauptschulabschluß,Store manager
-111124,NN,1993-08-02,1999-11-01,weiblich,Hochschule,Seller
-111125,OO,1959-06-16,2021-06-01,männlich,Hochschule,Seller
-111126,PP,1983-01-23,2020-04-01,männlich,mittlere Reife,Seller
-111127,QQ,1990-02-21,1996-12-01,weiblich,Hauptschulabschluß,Seller
+111111,AA,1962-02-23,2000-07-01,male,Hochschule,HR Manager
+111112,BB,1996-09-16,2021-02-01,female,mittlere Reife,Purchasing Manager
+111113,CC,1988-04-12,2018-10-01,female,Hochschule,Secretary
+111114,DD,1973-12-31,1995-01-01,female,Hauptschulabschluß,Janitor
+111115,EE,1986-07-03,2010-12-01,male,Hauptschulabschluß,Cleaning staff
+111116,FF,1965-04-19,2003-04-01,male,Hochschule,IT specialist 1
+111117,GG,1977-09-23,2008-05-01,male,Hochschule,Controller
+111118,HH,1971-10-26,2014-06-01,female,Hochschule,IT specialist 2
+111119,II,1994-11-02,2020-08-01,female,Hochschule,Marketing Manager
+111120,JJ,1958-05-16,1996-11-01,female,Hochschule,Team Leader - Finance
+111121,KK,1981-04-23,2021-06-01,male,mittlere Reife,Sales representative
+111122,LL,1970-09-21,2010-06-01,female,mittlere Reife,Store manager
+111123,MM,1988-12-22,2020-03-01,male,Hauptschulabschluß,Store manager
+111124,NN,1993-08-02,1999-11-01,female,Hochschule,Seller
+111125,OO,1959-06-16,2021-06-01,male,Hochschule,Seller
+111126,PP,1983-01-23,2020-04-01,male,mittlere Reife,Seller
+111127,QQ,1990-02-21,1996-12-01,female,Hauptschulabschluß,Seller

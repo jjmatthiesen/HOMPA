@@ -1,12 +1,12 @@
-Personalnummer,Tätigkeit,Arbeitnehmer,ho_social,ho_opt,ho_max,ho_prefer,difference_to_max,difference_to_opt,difference_to_social
-2000,IT Fachkraft,AB,34.5,100,100,20.0,80,80,14
-2001,Kundenbetreuerin,BC,37.0,75,100,100.0,0,-25,-63
-2002,Controller,CD,35.0,100,100,80.0,20,20,-45
-2003,Hausmeister,DE,37.5,0,0,0.0,0,0,37
-2004,Sekretärin,EF,39.25,100,100,0.0,100,100,39
-2005,Kundenbetreuer,FG,22.75,80,100,40.0,60,40,-17
-2006,Teamleiter Finanzen,GH,48.0,70,100,0.0,100,70,48
-2007,Personalleiter,HI,36.0,50,100,20.0,80,30,16
-2008,Marketing Managerin,IJ,35.5,75,100,40.0,60,35,-4
-2009,Einkaufsleiterin,JK,35.5,65,100,100.0,0,-35,-64
-2010,Reinigungskraft,KL,36.5,0,0,0.0,0,0,36
+Personal number,Activity,Employee,ho_social,ho_opt,ho_max,ho_prefer,difference_to_max,difference_to_opt,difference_to_social
+2000,IT Fachkraft,AB,47.6,100,100,20.0,80,80,27
+2001,Kundenbetreuerin,BC,49.6,75,100,100.0,0,-25,-50
+2002,Controller,CD,42.596825396825395,100,100,80.0,20,20,-37
+2003,Hausmeister,DE,35.3968253968254,0,0,0.0,0,0,35
+2004,Sekretärin,EF,36.7968253968254,100,100,0.0,100,100,36
+2005,Kundenbetreuer,FG,38.2,80,100,40.0,60,40,-1
+2006,Teamleiter Finanzen,GH,48.98201058201058,70,100,0.0,100,70,48
+2007,Personalleiter,HI,50.62063492063491,50,100,20.0,80,30,30
+2008,Marketing Managerin,IJ,42.735449735449734,75,100,40.0,60,35,2
+2009,Einkaufsleiterin,JK,42.9968253968254,65,100,100.0,0,-35,-57
+2010,Reinigungskraft,KL,34.596825396825395,0,0,0.0,0,0,34
