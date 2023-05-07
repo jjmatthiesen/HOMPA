@@ -31,11 +31,13 @@ H_{\text{max}}(e_j),               & \text{otherwise}
 
 
 ## Sense of Belonging to Company 
-$$H_{\text{max}_{\text{aff}}}(e_j) = 
+```math
+H_{\text{max}_{\text{aff}}}(e_j) = 
 \begin{cases}
 \text{false } ,& \text{if } D_{\text{now}} - D_{\text{start}} \leq 180 \\
 H_{\text{max}}(e_j),              & \text{otherwise}
-\end{cases}$$
+\end{cases}
+```
 
 ## Task-Media-Fit Model
 $$H_{\text{opt}}(e_j) = H_{\text{max}}(e_j) - \sum^{41}_{x = 3} Q_x$$
