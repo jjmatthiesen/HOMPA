@@ -19,11 +19,14 @@ $$H_{\text{max}}(e_j) = \sum_{i=9}^{16} T_i$$
 
 ## Infrastructure
 
-$$H_{\text{max}_{\text{infra}}}(e) = 
+
+```math
+H_{\text{max}_{\text{infra}}}(e) = 
 \begin{cases}
 \text{false } ,         & \text{if } I < \rho\\
 H_{\text{max}}(e_j),               & \text{otherwise}
-\end{cases}$$
+\end{cases}
+```
 
 
 
