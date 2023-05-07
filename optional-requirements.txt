@@ -1,0 +1,5 @@
+statsmodels>=0.13.5
+dtale
+pygwalker
+matplotlib
+seaborn
