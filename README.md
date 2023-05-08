@@ -73,9 +73,9 @@ $$        H_{commute}(e_j) =
 ### Caring Responsibility
 $$        H_{caring}(e_j) =
         \begin{cases}
-            50 ,& \text{if } C \text{ and } G = \text{f} \\
-            48 ,& \text{if }  C \text{ and } G = \text{m} \\
-            46,              & \text{otherwise} 
+            56.1 ,& \text{if } C \text{ and } G = \text{f} \\
+            52 ,& \text{if }  C \text{ and } G = \text{m} \\
+            50,              & \text{otherwise} 
         \end{cases}$$
 
 ### Personality Factors
