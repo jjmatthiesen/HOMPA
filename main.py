@@ -80,11 +80,11 @@ def ho_commute(time):
 # calculate the home office proportion based on caring responsibility
 def ho_gender_resp(employees):
     if employees['Caring Responsibility'] and employees['Gender'] == 'female':
-        return 50
+        return 56.1
     elif employees['Caring Responsibility'] and employees['Gender'] == 'male':
-        return 48
+        return 52
     else:
-        return 46
+        return 50
 
 
 # calculate the preferred proportion of home office
