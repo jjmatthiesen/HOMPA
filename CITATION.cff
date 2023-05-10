@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+authors:
+  - name: "Mark Colley"
+  - name: "Pascal Jansen"
+  - name: "Jennifer Jorina Matthiesen"
+  - name: "Hanne Hoberg"
+  - name: "Carmen Regerand"
+  - name: "Isabel Thiermann"
+message: "If you use this software, please cite both the conference paper from preferred-citation and the software itself."
+title: "How Much Home Office is Ideal? A Multi-Perspective Algorithm"
+abstract: "HOMPA is a python package including an algorithm that considers employer, employee demographic and social factors, and employee preferences to determine the ideal proportion of home office work for efficiency and resource-saving."
+keywords:
+  - home-office
+  - working-from-home
+  - teleworkability
+date-released: "NA"
+version: 0.0.1
+repository-code: "https://github.com/jjmatthiesen/HOMPA"
+type: software
+url: "NA"
+identifiers:
+  - description: "The GitHub tag"
+    type: url
+    value: "NA"
+license:
+  - "MIT"
+preferred-citation:
+  authors:
+    - family-names: Colley
+      given-names: Mark
+    - family-names: Jansen
+      given-names: Pascal
+    - family-names: Matthiesen
+      given-names: Jennifer Jorina
+    - family-names: Hoberg
+      given-names: Hanne
+    - family-names: Regerand
+      given-names: Carmen
+    - family-names: Thiermann
+      given-names: Isabel
+  title: "How Much Home Office is Ideal? A Multi-Perspective Algorithm"
+  type: "conference-paper"
+  year: 2023
+  conference:
+    - name: Symposium on Human-Computer Interaction for Work (CHIWORK '23)
+  doi: TODO
+contact:
+  - email: mark.colley@yahoo.de
+    name: "Mark Colley"
