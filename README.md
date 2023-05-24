@@ -1,25 +1,25 @@
 
 # How Much Home Office is Ideal? A Multi-Perspective Algorithm ([CHIWORK '23](https://www.chiwork.org/))
 
-[Mark Colley*](https://scholar.google.de/citations?user=Kt5I7wYAAAAJ&hl=de&oi=ao), Pascal Jansen*, Jennifer Jorina Matthiesen*, Hanne Hoberg, Carmen Regerand, Isabel Thiermann (*=equal contribution)
-
-
-
-
+[Mark Colley*](https://scholar.google.de/citations?user=Kt5I7wYAAAAJ&hl=de&oi=ao), [Pascal Jansen*](https://scholar.google.de/citations?user=cR1_0-EAAAAJ&hl=en), Jennifer Jorina Matthiesen*, Hanne Hoberg, Carmen Regerand, Isabel Thiermann (*=equal contribution)
 
 
 # Introduction to the Home Office Calculation
-
 The COVID pandemic has made working from home necessary, and many employees want to continue doing so even after the pandemic. There are advantages and drawbacks to the home office trend from both employer and employee perspectives. Determining the ideal proportion of home office for each employee is important but there is a research gap in how to do so. This work presents an algorithm that considers multiple perspectives to determine the ideal proportion of home office, including the employer's view, demographic and social factors of the employee, and the employee's preferred proportion of home office. The algorithm combines findings from several studies and can identify discrepancies between these perspectives.
 
 
+# HOMPA - Overview
+![Overview of HOMPA](./images/hompa-overview.png)
 
-## Teleworkability-Index
+
+# HOMPA - Components
+
+## Employer's Point of View
+
+### Teleworkability-Index
 $$H_{\text{max}}(e_j) = \sum_{i=9}^{16} T_i$$
 
-## Infrastructure
-
-
+### Infrastructure
 ```math
 H_{\text{max}_{\text{infra}}}(e) = 
 \begin{cases}
@@ -28,9 +28,7 @@ H_{\text{max}}(e_j),               & \text{otherwise}
 \end{cases}
 ```
 
-
-
-## Sense of Belonging to Company 
+### Sense of Belonging to Company 
 ```math
 H_{\text{max}_{\text{aff}}}(e_j) = 
 \begin{cases}
@@ -39,13 +37,13 @@ H_{\text{max}}(e_j),              & \text{otherwise}
 \end{cases}
 ```
 
-## Task-Media-Fit Model
+### Task-Media-Fit Model
 $$H_{\text{opt}}(e_j) = H_{\text{max}}(e_j) - \sum^{41}_{x = 3} Q_x$$
+
 
 ## Social Factors
 
 ### Different Generations
-
 $$H_{\text{gen}}(e_j) =
 \begin{cases}
 48 ,& \text{if } Y_{\text{birth}} \in \{1946,1964\} \\
