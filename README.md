@@ -24,7 +24,9 @@ We distinguish between an individual's and the company's total result for each p
 
 The following image visualizes the algorithm.
 
-![Overview of HOMPA](./images/hompa-overview.png)
+<p align="center">
+  <img src="./images/hompa-overview.png" alt="Overview of HOMPA">
+</p>
 
 
 ## Employer's Point of View
