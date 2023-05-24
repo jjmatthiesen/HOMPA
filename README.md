@@ -10,15 +10,15 @@ The COVID pandemic has made working from home necessary, and many employees want
 
 
 # HOMPA - Overview
-we consider three different perspectives:
+We consider three different perspectives to determine the ideal proportion of home office:
 
-- The employer's point of view, denoted as `$$P_{\text{ER}}$$`
-- Social factors, denoted as `P_{social}`
-- The preferred proportion of home office, denoted as `P_{prefer}`
+- The employer's perspective, denoted as $P_{ER}$
+- Social factors, denoted as $P_{social}$
+- The preferred proportion of home office by employees, denoted as $P_{prefer}$
 
-From the employer's perspective, we determine the maximum proportion of home office (`H_{max}`) based on the tasks executed and the ideal proportion of home office (`H_{opt}`), which also takes into account the proportion of interaction required for the particular tasks.
+From the employer's perspective, we determine the maximum proportion of home office ($H_{max}$) based on the tasks executed and the ideal proportion of home office ($H_{opt}$), which also takes into account the proportion of interaction required for the particular tasks.
 
-The factors of `P_{social}` and `P_{prefer}` are aggregated into `H_{social}` and `H_{prefer}` respectively.
+The factors of $P_{social}$ and $P_{prefer}$ are aggregated into $H_{social}$ and $H_{prefer}$ respectively.
 
 We distinguish between an individual's and the company's total result for each perspective. Based on this, discrepancies between employers and employees and any need for discussion are identified.
 
