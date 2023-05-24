@@ -5,21 +5,22 @@
 
 
 ## Introduction to the Home Office Calculation
-
 The COVID pandemic has made working from home necessary, and many employees want to continue doing so even after the pandemic. There are advantages and drawbacks to the home office trend from both employer and employee perspectives. Determining the ideal proportion of home office for each employee is important but there is a research gap in how to do so. This work presents an algorithm that considers multiple perspectives to determine the ideal proportion of home office, including the employer's view, demographic and social factors of the employee, and the employee's preferred proportion of home office. The algorithm combines findings from several studies and can identify discrepancies between these perspectives.
 
 
 
 ## HOMPA - Overview
-We consider three perspectives to determine the ideal proportion of home office:
-- The employer's point of view $$P_ER$$
-- Social factors $$P_social$$
-- The preferred proportion of home office by employees $$P_prefer$$
+we consider three different perspectives:
 
-For the employer, we determine the maximum proportion of home office $$H_max$$ based on the executed tasks and the ideal proportion of home office $$H_opt$$, which also respects the proportion of interaction required for the particular tasks.
+- The employer's point of view, denoted as `P_{ER}`
+- Social factors, denoted as `P_{social}`
+- The preferred proportion of home office, denoted as `P_{prefer}`
 
-The factors of $$P_social$$ and $$P_prefer$$ are aggregated into $$H_social$$ and $$H_prefer$$ respectively. We distinguish an individual’s and the company’s total result for each perspective. Based on this, discrepancies between employers and employees and
-any need for discussion are identified.
+From the employer's perspective, we determine the maximum proportion of home office (`H_{max}`) based on the tasks executed and the ideal proportion of home office (`H_{opt}`), which also takes into account the proportion of interaction required for the particular tasks.
+
+The factors of `P_{social}` and `P_{prefer}` are aggregated into `H_{social}` and `H_{prefer}` respectively.
+
+We distinguish between an individual's and the company's total result for each perspective. Based on this, discrepancies between employers and employees and any need for discussion are identified.
 
 The following image visualizes the algorithm.
 
