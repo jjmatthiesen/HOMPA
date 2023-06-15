@@ -1,7 +1,7 @@
 
 # How Much Home Office is Ideal? A Multi-Perspective Algorithm ([CHIWORK '23](https://www.chiwork.org/))
 
-[Mark Colley*](https://scholar.google.de/citations?user=Kt5I7wYAAAAJ&hl=de&oi=ao), [Pascal Jansen*](https://scholar.google.de/citations?user=cR1_0-EAAAAJ&hl=en), Jennifer Jorina Matthiesen*, Hanne Hoberg, Carmen Regerand, Isabel Thiermann (*=equal contribution)
+[Mark Colley*](https://scholar.google.de/citations?user=Kt5I7wYAAAAJ&hl=de&oi=ao), [Pascal Jansen*](https://scholar.google.de/citations?user=cR1_0-EAAAAJ&hl=en), [Jennifer Jorina Matthiesen*](https://scholar.google.de/citations?user=LEu4D5gAAAAJ&hl=de&oi=ao), Hanne Hoberg, Carmen Regerand, Isabel Thiermann (*=equal contribution)
 
 
 # Introduction to the Home Office Calculation
