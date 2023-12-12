@@ -25,7 +25,7 @@ setup(
   author = 'Mark Colley',                   # Type in your name
   author_email = 'mark.colley@yahoo.de',      # Type in your E-Mail
   url = 'https://github.com/jjmatthiesen/HOMPA',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/engyasin/Offline_MOT/archive/refs/tags/v1.2.1.tar.gz',   # I explain this later on
+  download_url = '',   # I explain this later on
   keywords = ['Home Office', 'Multi-Perspective'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'pandas',
@@ -44,5 +44,6 @@ setup(
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
   ],
 )
